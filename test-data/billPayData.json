@@ -1,0 +1,13 @@
+{
+  "validBillPayDetails": {
+    "payeeName":"Juan",
+    "address":"Gladiola Street",
+    "city":"Manila",
+    "state":"Metro Manila",
+    "zipCode":"432829",
+    "phoneNumber":"1238123127",
+    "accountNumber":"41273218",
+    "amount": "10",
+    "expectedMessage":"Bill Payment Complete"
+  }
+}

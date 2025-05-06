@@ -1,0 +1,14 @@
+{
+    "validDetails": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "address": "123 Elm Street",
+      "city": "Springfield",
+      "state": "Illinois",
+      "zipCode": "62704",
+      "phoneNumber": "2175551234",
+      "ssn": "123456789",
+      "password": "Test@123",
+      "expectedMessage":"Your account was created successfully. You are now logged in."
+    }
+  }

@@ -1,0 +1,6 @@
+{
+  "validTransferFundDetails": {
+    "amount": "10",
+    "expectedMessage":"Transfer Complete!"
+  }
+}
