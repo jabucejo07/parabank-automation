@@ -35,6 +35,7 @@ export class RegistrationPage extends BasePage {
         await expect(this.page).toHaveURL(/.*\/parabank\/register\.htm$/);
         await expect(this.page).toHaveTitle('ParaBank | Register for Free Online Account Access');
         await expect(this.buttonRegister).toBeVisible();
+        console.log("Navigated Successfully to Registration Page!");
     }
 
     async registerUser(firstName: string, lastName: string, address: string, city: string, state: string, zipCode: string, phoneNumber: string, ssnNumber: string, userName: string, password: string){
@@ -55,5 +56,6 @@ export class RegistrationPage extends BasePage {
     async verifyUserRegistrationIsSuccessful(username: string, message: string){
         await expect(this.page.getByRole('heading', { name: `Welcome ${username}` })).toBeVisible();
         await expect(this.page.getByText(`${message}`)).toBeVisible();
+        console.log("User Registration Success!");
     }
 }

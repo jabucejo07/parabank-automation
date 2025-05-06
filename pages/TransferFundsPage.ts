@@ -6,7 +6,6 @@ export class TransferFundsPage extends BasePage {
     private textFieldAmount: Locator;
     private dropdownFromAccountId: Locator;
     private dropdownToAccountId: Locator;
-    private headerTextTransferComplete: Locator;
 
     constructor(page: Page){
         super(page);
@@ -14,7 +13,6 @@ export class TransferFundsPage extends BasePage {
         this.dropdownFromAccountId = page.locator('#fromAccountId');
         this.dropdownToAccountId = page.locator('#toAccountId');
         this.textFieldAmount = page.locator('#amount');
-        this.headerTextTransferComplete = page.getByRole('heading', { name: 'Transfer Complete!' });
     }
 
     async transferFundsToAnotherAccount(accountId: string, amount: string){
@@ -34,5 +32,6 @@ export class TransferFundsPage extends BasePage {
     async verifyTransferFundsIsSuccessful(amount: string, message: string){
         await expect(this.page.getByRole('heading', { name: `${message}` })).toBeVisible();
         await expect(this.page.getByText(`$${amount}.00 has been transferred`)).toBeVisible();
+        console.log("Transfer Fund Successfully!");
     }
 }

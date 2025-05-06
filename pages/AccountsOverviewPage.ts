@@ -13,6 +13,7 @@ export class AccountsOverviewPage extends BasePage {
         await expect(this.page).toHaveURL(/.*\/parabank\/overview\.htm$/);
         await expect(this.page).toHaveTitle('ParaBank | Accounts Overview');
         await expect(this.headerTextAccountsOverview).toBeVisible();
+        console.log("Navigated Successfully to Accounts Overview Page!");
     }
 
     async assertNewAccountIdIsDisplayed(accountId: string) {

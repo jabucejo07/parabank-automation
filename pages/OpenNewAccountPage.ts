@@ -21,12 +21,14 @@ export class OpenNewAccountPage extends BasePage {
         await this.dropdownFromAccountId.locator('option').first().waitFor({ state: 'attached' });
         await expect(this.dropdownFromAccountId.locator('option')).toHaveCount(1);
         await this.buttonOpenNewAccount.click();
+        console.log("Created New Savings Account Successfully!");
     }
 
     async storeNewAccountIdValue(): Promise<string> {
         await this.textValueNewAccountID.waitFor({ state: 'visible' });
         const accountId = (await this.textValueNewAccountID.textContent())?.trim() || '';
         console.log('Captured New Account ID:', accountId);
+        console.log("Stored Account ID Successfully!");
         return accountId;
     }
 
@@ -34,5 +36,6 @@ export class OpenNewAccountPage extends BasePage {
         await expect(this.page).toHaveURL(/.*\/parabank\/openaccount\.htm$/);
         await expect(this.page).toHaveTitle('ParaBank | Open Account');
         await expect(this.buttonOpenNewAccount).toBeVisible();
+        console.log("Navigated Successfully to Open New Account Page!");
     }
 }

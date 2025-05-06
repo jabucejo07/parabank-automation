@@ -10,12 +10,4 @@ export class BasePage {
     async goto(url: string) {
         await this.page.goto(url);
     }
-
-    /* async click(selector: string) {
-        await this.page.click(selector);
-    }
-
-    async fill(selector: string, text: string) {
-        await this.page.fill(selector, text);
-    } */
 }

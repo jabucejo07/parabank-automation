@@ -33,6 +33,7 @@ export class BillPayPage extends BasePage {
         await expect(this.page).toHaveURL(/.*\/parabank\/billpay\.htm$/);
         await expect(this.page).toHaveTitle('ParaBank | Bill Pay');
         await expect(this.buttonSendPayment).toBeVisible();
+        console.log("Navigated Successfully to Bill Pay Page!");
     }
 
     async sendPayment(accountId: string, payeeName: string, address: string, city: string, state: string, zipCode: string, phoneNumber: string, accountNumber: string, amount: string){
@@ -54,5 +55,6 @@ export class BillPayPage extends BasePage {
         await expect(this.page.getByRole('heading', { name: `${message}` })).toBeVisible();
         await expect(this.page.getByText(`$${amount}.00`)).toBeVisible();
         await expect(this.page.getByText(`${accountId}`)).toBeVisible();
+        console.log("Bill Pay Successfully!");
     }
 }
