@@ -5,6 +5,7 @@ export class SideMenuComponent {
     private linkAccountsOverview: Locator;
     private linkTransferFunds: Locator;
     private linkBillPay: Locator;
+    private linkLogout: Locator;
 
 
     constructor(page: Page){
@@ -12,6 +13,7 @@ export class SideMenuComponent {
         this.linkAccountsOverview = page.getByRole('link', { name: 'Accounts Overview' });
         this.linkTransferFunds = page.getByRole('link', { name: 'Transfer Funds' });
         this.linkBillPay = page.getByRole('link', { name: 'Bill Pay' })
+        this.linkLogout = page.getByRole('link', { name: 'Log Out' });
     }
 
     async navigateToOpenNewAccountPage(){
@@ -30,4 +32,7 @@ export class SideMenuComponent {
         await this.linkBillPay.click();
     }
 
+    async logOutUser(){
+        await this.linkLogout.click();
+    }
 }

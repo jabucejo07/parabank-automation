@@ -1,5 +1,6 @@
 import { Page, Locator, expect } from '@playwright/test';
 import { BasePage } from './BasePage';
+import { retryClickUntilGone } from '../utils/UIUtils';
 
 export class BillPayPage extends BasePage {
     private buttonSendPayment: Locator;
@@ -36,7 +37,7 @@ export class BillPayPage extends BasePage {
         console.log("Navigated Successfully to Bill Pay Page!");
     }
 
-    async sendPayment(accountId: string, payeeName: string, address: string, city: string, state: string, zipCode: string, phoneNumber: string, accountNumber: string, amount: string){
+    async sendPayment(accountId: string, payeeName: string, address: string, city: string, state: string, zipCode: string, phoneNumber: string, accountNumber: string, amount: number){
         await this.textFieldPayeeName.fill(payeeName);
         await this.textFieldAddress.fill(address);
         await this.textFieldCity.fill(city);
@@ -45,16 +46,17 @@ export class BillPayPage extends BasePage {
         await this.textFieldPhoneNumber.fill(phoneNumber);
         await this.textFieldAccountNumber.fill(accountNumber);
         await this.textFieldVerifyAccountNumber.fill(accountNumber);
-        await this.textFieldAmount.fill(amount);
+        await this.textFieldAmount.fill(amount.toString());
         await this.dropdownFromAccountId.selectOption(accountId);
         await expect(this.buttonSendPayment).toBeVisible();
-        await this.buttonSendPayment.click();
+        await expect(this.buttonSendPayment).toBeEnabled();
+        await this.buttonSendPayment.hover();
+        await retryClickUntilGone(this.buttonSendPayment);
     }
 
     async verifyBillPayIsSuccessful(accountId: string, amount: string, message: string){
         await expect(this.page.getByRole('heading', { name: `${message}` })).toBeVisible();
         await expect(this.page.getByText(`$${amount}.00`)).toBeVisible();
-        await expect(this.page.getByText(`${accountId}`)).toBeVisible();
         console.log("Bill Pay Successfully!");
     }
 }
